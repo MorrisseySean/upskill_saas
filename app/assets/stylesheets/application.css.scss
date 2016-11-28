@@ -1,6 +1,9 @@
-
- @import 'bootstrap-sprockets';
- @import 'bootstrap';
+/// Bootstrap SASS
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+/// FontAwesome SASS
+@import "font-awesome-sprockets";
+@import "font-awesome";
  
  /// Typography styles
  h1, h2, h3 {

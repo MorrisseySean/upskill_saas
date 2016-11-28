@@ -55,5 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use Twitter Bootstrap for frontend UI and layout
 gem 'bootstrap-sass', '3.3.7'
 
+# Use FontAwesome sass gem for adding icons
+gem 'font-awesome-sass', '4.6.2'
+
 # Ruby version
 ruby '2.3.0'
