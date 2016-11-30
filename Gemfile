@@ -58,5 +58,8 @@ gem 'bootstrap-sass', '3.3.7'
 # Use FontAwesome sass gem for adding icons
 gem 'font-awesome-sass', '4.6.2'
 
+# Use Hirb to clean up console database presentation
+gem 'hirb', '0.7.3'
+
 # Ruby version
 ruby '2.3.0'
