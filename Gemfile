@@ -61,5 +61,8 @@ gem 'font-awesome-sass', '4.6.2'
 # Use Hirb to clean up console database presentation
 gem 'hirb', '0.7.3'
 
+# Use Devise to manage user membership
+gem 'devise', '4.2.0'
+
 # Ruby version
 ruby '2.3.0'
