@@ -1,6 +1,7 @@
 /// Bootstrap SASS
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
 /// FontAwesome SASS
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -11,7 +12,7 @@
 }
 
 /// Background Gradient
-body, .navbar {
+.home-callout, .navbar {
   //Gradient provided by @_ighosh at uiGradients.com
   background: #A80077; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #cb60b3 , #A80077); /* Chrome 10-25, Safari 5.1-6 */
