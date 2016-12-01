@@ -64,5 +64,11 @@ gem 'hirb', '0.7.3'
 # Use Devise to manage user membership
 gem 'devise', '4.2.0'
 
+# Use Stripe to handle payments and subscriptions
+gem 'stripe', '1.48.0'
+
+# Use Figaro for ENV variables
+gem 'figaro', '1.1.1'
+
 # Ruby version
 ruby '2.3.0'
