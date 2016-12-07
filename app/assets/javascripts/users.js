@@ -42,8 +42,7 @@ $(document).on('turbolinks:load', function(){
             submit_button.val("Sign Up").prop('disabled', false);
             
         } 
-        alert($('#plan').val());
-        /*else {
+        else {
             // Send fields to Stripe
             Stripe.createToken({
                 number: card_num,
@@ -51,7 +50,7 @@ $(document).on('turbolinks:load', function(){
                 exp_month: expMonth,
                 exp_year: expYear
                 }, stripeResponseHandler);
-        }*/
+        }
         
         return false;
     });
