@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-    before_action :select_plan only: :new 
+    before_action :select_plan, only: :new 
     
     # Extend default devise gem behaviour, so users with pro account 
     # will save with a stripe subscription method. Otherwise do the default
