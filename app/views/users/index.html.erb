@@ -1,6 +1,8 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-md-8 col-md-offset-2">
+      <h1>devMatch Community</h1>
+      <p>Welcome to the devMatch community page!</p>
       <ul class = "list-unstyled">
         <% @users.each do |user| %>
           <% if user.profile %>
@@ -18,7 +20,12 @@
                     <h2><%= user.profile.first_name %> <%= user.profile.last_name %></h2>
                   <% end %>
                 </div>
-                <p><%= user.profile.job_title %></p>
+                <p>
+                  <%= user.profile.job_title %>
+                  <% if user.plan_id == 2 %>
+                    <span class = 'label label-danger'>Pro Account</span>
+                  <% end %>
+                </p>
               </div>
             </li>
           <% end %>
