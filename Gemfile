@@ -73,5 +73,8 @@ gem 'figaro', '1.1.1'
 # Use Paperclip for image uploads
 gem 'paperclip', '4.3.6'
 
+# Use nokogiri for web scraping
+gem 'nokogiri'
+
 # Ruby version
 ruby '2.3.0'

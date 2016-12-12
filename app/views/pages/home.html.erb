@@ -1,6 +1,6 @@
 <div class="container-fluid text-center home-callout">
-    <h1>Welcome to devMatch</h1>
-    <h3>A membership site where entrepreneurs can meet developers!</h3>
+    <h1>Welcome to Prep Phase</h1>
+    <h3>The home page for all your Atlas Reactor needs!</h3>
 </div>
 <div class="container home-sign-up-links">
     <div class="row">
@@ -25,21 +25,56 @@
                 </div>
             </div>
         <% else %>
-            <div class="col-md-6">
-                <div class="well">
-                    <h2 class="text-center">Basic Membership</h2>
-                    <h4>Sign up for free to get basic access to the community!</h4>
-                    <br/>
-                    <%= link_to "Sign Up with Basic Membership Plan", new_user_registration_path(plan: @basic_plan.id), class: "btn btn-primary btn-lg btn-block" %>
+            <div class="col-md-8">
+                <div class="well well-home row">
+                    <h2 class="text-center">Freelancers</h2>
+                    <div class = "text-center">
+                    <% @char_img_urls.each do |img| %>
+                        <div class = "freelancer-img"><%= image_tag img, class: "grn-border" %></div>
+                    <% end %>
+                    </div>
+                </div>
+                <div class="well well-home row">
+                    <h2 class="text-center">Top Guides</h2>
+                    <% 6.times do |x| %>
+                        <div class = "col-md-4 grn-border home-guide-box">
+                            <div class = "col-sm-4">
+                                <div class = "freelancer-img grn-border"></div>
+                            </div>
+                            <div class = "col-sm-8">
+                                <div class = "home-guide-text">
+                                    <h4>Guide <%= x + 1 %></h4>
+                                    <span>By User</span>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="well">
-                    <h2 class="text-center">Pro Membership</h2>
-                    <h4>Sign up for the pro account for €10/month to get access to the community and contact information.</h4>
-                    <%= link_to "Sign Up with Pro Membership Plan", new_user_registration_path(plan: @pro_plan.id), class: "btn btn-success btn-lg btn-block" %>
+            <div class="col-md-4">
+                <div class="well well-home">
+                    <h2 class="text-center">Sign Up</h2>
+                    <h4>Sign up now to become a member of the Prep Phase community,
+                    allowing you to create guides, join the Prep Phase League and more!</h4>
+                    <%= link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-primary btn-lg btn-block" %>
+                </div>
+                <div class = "well well-home">
+                    <h2>PPL Leaderboard</h2>
+                    <ul>
+                        <% 8.times do |x| %>
+                            <li class = "lb-team row">
+                                <div class = "col-sm-2">
+                                    <span class = "freelancer-img grn-border"></span>
+                                </div>
+                                <div class = "col-sm-7 col-sm-offset-1">
+                                    <h4>Team <%= x + 1 %></h4>
+                                </div>
+                            </li>
+                        <% end %>
+                    </ul>
                 </div>
             </div>
+            
         <% end %>
     </div>
 </div>

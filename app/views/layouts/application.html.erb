@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>devMatch</title>
+    <title>Prep Phase</title>
     <%= csrf_meta_tags %>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
     
@@ -23,15 +23,55 @@
             <span class="icon-bar"></span>
           </button>
           <%= link_to root_path, class: "navbar-brand" do%>
-          <i class="fa fa-group"></i> devMatch
+          <i class="fa fa-exchange"></i> Prep Phase
           <% end %>
         </div>
         <div class="collapse navbar-collapse" id="main-nav-collapse">
+        <ul class="nav navbar-nav navbar-default">
+            <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Freelancers <span class = "fa fa-angle-double-down"></span>
+                </a>
+              <ul class="dropdown-menu list-inline nav-freelancer">
+                <% @char_names.each do |name| %>
+                    <li><a href='#'><%= name.text %></a></li>
+                <% end %>
+              </ul>
+            </li>
+            <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                     Guides <span class = "fa fa-angle-double-down"></span>
+                </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    League <span class = "fa fa-angle-double-down"></span> 
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                </ul>
+            </li>
+        </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn' %>
             <% else %>
-                <%= link_to "Login", new_user_session_path, class: 'btn btn-success navbar-btn' %>
+                <%= link_to "Login", new_user_session_path, class: 'btn btn-default navbar-btn' %>
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
