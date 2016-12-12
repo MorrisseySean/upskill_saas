@@ -34,7 +34,7 @@
                 </a>
               <ul class="dropdown-menu list-inline nav-freelancer">
                 <% @char_names.each do |name| %>
-                    <li><a href='#'><%= name.text %></a></li>
+                    <li><%= link_to name.text, freelancer_path(id: name.text.gsub(/[^0-9a-z]/i, '').downcase) %></li>
                 <% end %>
               </ul>
             </li>

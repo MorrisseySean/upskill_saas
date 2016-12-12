@@ -1,0 +1,30 @@
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-8 col-md-offset-2">
+            <h1><%= @char_data[:name] %></h1>
+            <div class = "row well">
+                <div class = "col-md-8">
+                    <p><%= @char_data[:desc] %></p>
+                    <p>Role: <%= @char_data[:role] %></p>
+                    <p>Faction: <%= @char_data[:faction] %></p>
+                </div>
+                <div class = "col-md-4">
+                    <%= image_tag @char_data[:full_img], class: "freelancer-img grn-border" %>
+                </div>
+            </div>
+            <h2>Abilities</h2>
+            <div class = "row well">
+                <% 4.times do |x| %>
+                    <div class = "row ability-box">
+                        <div class ="ability-img ability_img_<%= x + 1 %> col-md-3" 
+                            style="background-image:url(<%= @char_data[:ability_img] %>);">
+                        </div>
+                        <div class = "col-md-9">
+                            <h3><%= @char_data[:ability][x + 1][:name] %></h3>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

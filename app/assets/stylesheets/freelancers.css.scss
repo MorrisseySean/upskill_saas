@@ -1,0 +1,59 @@
+.freelancer-img {
+    max-width: 100%;
+    border-radius: 5%;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.ability-box {
+    border-bottom: 2px solid #03e603; 
+}
+
+/// Ability image translations
+.ability-img {
+    margin-top: 20px;    
+    margin-bottom: 20px;
+    margin-left: 20px;
+    border-radius: 8px;
+    background-color: #444444;
+}
+
+.ability_img_1 {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.ability_img_2 {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    background-position: -100px 0px;
+}
+
+.ability_img_3 {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    background-position: -200px 0px;
+}
+
+.ability_img_4 {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    background-position: -300px 0px;
+}
+
