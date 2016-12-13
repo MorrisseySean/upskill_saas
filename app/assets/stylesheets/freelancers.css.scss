@@ -10,7 +10,30 @@
 }
 
 .ability-box {
-    border-bottom: 2px solid #03e603; 
+    border-bottom: 2px solid #03e603;
+}
+
+.ability-video-box{
+    max-width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ability-video {
+    border-radius: 5px;
+    max-width: 360px;
+    max-height: 280px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 0px;
+}
+
+.description-box {
+    border: 1px solid #444444;
+    border-radius: 4px;
+    padding: 8px;
+    font-style: italic;
+    background-color: #222222;
 }
 
 /// Ability image translations
