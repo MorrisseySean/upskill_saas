@@ -6,20 +6,17 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   # Get a list of freelancer names
-  before_action :get_char_names
-  
+  before_filter :get_chars
+    
   protected
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:stripe_card_token, :email, :password, :password_confirmation) }
     end
     
-    def get_char_names
-      url = 'https://www.atlasreactorgame.com/en/characters/'
-      doc = Nokogiri::HTML(open(url))
-      @char_names = doc.css('.character-sub-header')
-      @char_img_urls = Array.new()
-      doc.css('.character-portrait').each do |img|
-        @char_img_urls << img.to_s.sub(/(.*)(?:url\()/, "").sub(/\);(.*)/, "")
-      end
+  public
+    def get_chars
+      @freelancers = Freelancer.all
     end
+    
+    
 end

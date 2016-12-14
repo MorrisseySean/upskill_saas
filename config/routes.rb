@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   resources :users do 
     resource :profile
   end
-  resources :freelancers
+  resources :freelancers do
+    resource :ability
+  end
   get 'about', to: 'pages#about'
+  get 'admin', to: 'pages#admin'
   resources :contacts, only: :create
   get 'contact-us', to: 'contacts#new', as: 'new_contact'
 end

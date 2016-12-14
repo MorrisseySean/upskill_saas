@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -33,8 +34,8 @@
                   Freelancers <span class = "fa fa-angle-double-down"></span>
                 </a>
               <ul class="dropdown-menu list-inline nav-freelancer">
-                <% @char_names.each do |name| %>
-                    <li><%= link_to name.text, freelancer_path(id: name.text.gsub(/[^0-9a-z]/i, '').downcase) %></li>
+                <% @freelancers.each do |freelancer| %>
+                    <li><%= link_to freelancer.name, freelancer_path(id: freelancer.id) %></li>
                 <% end %>
               </ul>
             </li>

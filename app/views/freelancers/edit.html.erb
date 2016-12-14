@@ -1,0 +1,65 @@
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-10 col-md-offset-1">
+            <h1><%= @char_data[:name] %></h1>
+            <div class = "row well">
+                <div class = "col-md-8">
+                    <p class = "description-box"><%= @char_data[:full_desc] %></p>
+                    <p>Role: <%= @char_data[:role] %></p>
+                    <p>Faction: <%= @char_data[:faction] %></p>
+                </div>
+                <div class = "col-md-4">
+                    <%= image_tag @char_data[:full_img], class: "freelancer-img grn-border" %>
+                </div>
+            </div>
+            <h2>Abilities</h2>
+            <div class = "row well">
+                <% x = 0 %>
+                <% @freelancer.abilities.each do |ab| %>
+                    <div class = "row ability-box">
+                        <div class ="ability-img ability_img_<%= x + 1 %> col-md-3" 
+                            style="background-image:url(<%= @char_data[:ability_img] %>);">
+                        </div>
+                        <div class = "col-md-6">
+                            <h3><%= @char_data[:ability][x + 1][:name] %></h3>
+                            <p><%= @char_data[:ability][x + 1][:description] %></p>
+                            <p><%= @char_data[:ability][x + 1][:phase] %></p>
+                            <%= form_for ab, url: freelancer_path(params[:id]), :html => { :multipart => true } do |f| %>
+                                <%= hidden_field_tag :ability_id, ab.id %>
+                                <% ab_i = x + 1 %>
+                                <%= f.hidden_field :ab_index, value: ab_i %>
+                                <div class = 'form-group'>
+                                    <%= f.label :damage %>
+                                    <%= f.text_field :damage, class: 'form-control' %>
+                                </div>
+                                <div class = 'form-group'>
+                                    <%= f.label :heal %>
+                                    <%= f.text_field :heal, class: 'form-control' %>
+                                </div>
+                                <div class = 'form-group'>
+                                    <%= f.label :shield %>
+                                    <%= f.text_field :shield, class: 'form-control' %>
+                                </div>
+                                <div class = 'form-group'>
+                                    <%= f.label :range %>
+                                    <%= f.text_field :range, class: 'form-control' %>
+                                </div>
+                                <div class = 'form-group'>
+                                    <%= f.label :cooldown %>
+                                    <%= f.text_field :cooldown, class: 'form-control' %>
+                                </div>
+                                <div class = 'form-group'>
+                                    <%= f.submit "Update Ability", class: "btn btn-primary" %>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class = "col-md-3 ability-video-box">
+                            <%= video_tag @char_data[:ability][x + 1][:video], controls: true, class: "ability-video grn-border" %>
+                        </div>
+                    </div>
+                    <% x += 1 %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
