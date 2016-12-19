@@ -35,9 +35,15 @@
             <div class="col-md-4">
                 <div class="well well-home">
                     <% if user_signed_in? %>
-                        <h2 class = "text-center">Your Profile</h2>
-                        <p>Create your profile to start taking part in the community!</p>
-                        <%= link_to "Create Your Profile!", new_user_profile_path(user_id: current_user.id), class: 'btn btn-primary btn-lg btn-block' %>
+                        <% if current_user.profile %>
+                            <h2 class="text-center">Get Involved</h2>
+                            <%= link_to "Create a Guide", '#', class: 'btn btn-block btn-info' %>
+                            <%= link_to "Join the PPL", '#', class: 'btn btn-block btn-success' %>
+                        <% else %>
+                            <h2 class = "text-center">Your Profile</h2>
+                            <p>Create your profile to start taking part in the community!</p>
+                            <%= link_to "Create Your Profile!", new_user_profile_path(user_id: current_user.id), class: 'btn btn-primary btn-lg btn-block' %>
+                        <% end %>
                     <% else %>
                         <h2 class="text-center">Sign Up</h2>
                         <h4>Sign up now to become a member of the Prep Phase community,

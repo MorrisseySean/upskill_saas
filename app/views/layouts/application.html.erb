@@ -70,7 +70,28 @@
         </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn' %>
+            <li class="dropdown active">
+                <a href="#" class="dropdown-toggle profile-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <% if current_user.profile %>
+                        <%= current_user.profile.username %>&emsp;
+                        <% if current_user.profile.avatar %>
+                            <%= image_tag current_user.profile.avatar, class: "grn-border" %>
+                        <% end %>
+                    <% else %>
+                        user<%= Base64::encode(current_user.id) %>
+                    <% end %>
+                </a>
+              <ul class="dropdown-menu">
+                <% if current_user.profile %>
+                    <li><%= link_to "Edit Profile", edit_user_profile_path(user_id: current_user.id) %></li>
+                <% else %>
+                    <li><%= link_to "Edit Profile", new_user_profile_path(user_id: current_user.id) %></li>
+                <% end %>
+                <li><%= link_to "My Account", edit_user_registration_path %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn' %></li>
+              </ul>
+            </li>
             <% else %>
                 <%= link_to "Login", new_user_session_path, class: 'btn btn-default navbar-btn' %>
             <% end %>
@@ -78,7 +99,7 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
             <li><%= link_to "Community", users_path %></li>
-            <li><%= link_to "My Account", edit_user_registration_path %></li>
+            <li></li>
             <% end %>
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Contact Us", new_contact_path %></li>

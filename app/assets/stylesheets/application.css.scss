@@ -60,6 +60,21 @@
     }
 }
 
+.profile-dropdown {
+    min-width: 158px;
+    font-size: 1.2em;
+    text-align: left;
+    
+    img {
+        height: 48px;
+        width: 48px;
+        margin-top: -24px;
+        margin-bottom: -24px;
+        margin-left: 20px;
+        padding: 0;
+    }
+}
+
 /// Home Page styles
 .home-callout{
     color: white;
