@@ -1,27 +1,31 @@
 <%= form_for @profile, url: user_profile_path, :html => { :multipart => true } do |f| %>
+    
     <div class = 'form-group'>
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name, class: 'form-control' %>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control' %>
     </div>
     <div class = 'form-group'>
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, class: 'form-control' %>
+        <%= f.label :glyphtag %>
+        <%= f.text_field :glyphtag, class: 'form-control' %>
     </div>
     <div class = 'form-group'>
-        <%= f.label :job_title %>
-        <%= f.select :job_title,['Developer', 'Entrepreneur', 'Investor'], {}, class: 'form-control' %>
+        <%= f.label :favorite_role %>
+        <%= f.select :favorite_role,['Firepower', 'Frontline', 'Support', "Generalist"], {}, class: 'form-control' %>
+    </div>
+    <%  
+        select_fields = Array.new()
+        @freelancers.each do |char|
+            select_fields << char.name
+        end 
+        select_fields << "None"
+    %>
+    <div class = 'form-group'>
+        <%= f.label :favorite_freelancer %>
+        <%= f.select :favorite_freelancer, select_fields, {}, class: 'form-control' %>
     </div>
     <div class = 'form-group'>
-        <%= f.label :phone_number %>
-        <%= f.text_field :phone_number, class: 'form-control' %>
-    </div>
-    <div class = 'form-group'>
-        <%= f.label :contact_email %>
-        <%= f.text_field :contact_email, class: 'form-control' %>
-    </div>
-    <div class = 'form-group'>
-        <%= f.label :description %>
-        <%= f.text_area :description, class: 'form-control' %>
+        <%= f.label :bio %>
+        <%= f.text_area :bio, class: 'form-control' %>
     </div>
     <div class = 'form-group'>
         <%= f.label :avatar %>

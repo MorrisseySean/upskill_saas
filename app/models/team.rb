@@ -1,6 +1,7 @@
-class Profile < ActiveRecord::Base
-    belongs_to  :user
-    has_many    :guides
+class Team < ActiveRecord::Base
+    
+    has_many :users
+    belongs_to :user
     
     has_attached_file   :avatar,
                         :styles => { :medium => "300x300>", :thumb => "100x100>"},
