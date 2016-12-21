@@ -14,6 +14,7 @@
   </head>
 
   <body>
+    <div class="pulse"></div>
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <div class='container'>
         <div class="navbar-header">
@@ -29,7 +30,7 @@
         </div>
         <div class="collapse navbar-collapse" id="main-nav-collapse">
         <ul class="nav navbar-nav navbar-default">
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Freelancers <span class = "fa fa-angle-double-down"></span>
                 </a>
@@ -39,7 +40,7 @@
                 <% end %>
               </ul>
             </li>
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                      Guides <span class = "fa fa-angle-double-down"></span>
                 </a>
@@ -53,7 +54,7 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     League <span class = "fa fa-angle-double-down"></span> 
                 </a>
@@ -70,7 +71,7 @@
         </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a href="#" class="dropdown-toggle profile-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <% if current_user.profile %>
                         <%= current_user.profile.username %>&emsp;
@@ -78,11 +79,12 @@
                             <%= image_tag current_user.profile.avatar, class: "grn-border" %>
                         <% end %>
                     <% else %>
-                        user<%= Base64::encode(current_user.id) %>
+                        user<%= (current_user.id * current_user.created_at.to_f).floor %>
                     <% end %>
                 </a>
               <ul class="dropdown-menu">
                 <% if current_user.profile %>
+                    <li><%= link_to "View Profile", user_path(id: current_user.id) %></li>
                     <li><%= link_to "Edit Profile", edit_user_profile_path(user_id: current_user.id) %></li>
                 <% else %>
                     <li><%= link_to "Edit Profile", new_user_profile_path(user_id: current_user.id) %></li>
@@ -97,10 +99,6 @@
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-            <li><%= link_to "Community", users_path %></li>
-            <li></li>
-            <% end %>
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Contact Us", new_contact_path %></li>
             

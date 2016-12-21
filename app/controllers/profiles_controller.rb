@@ -31,14 +31,20 @@ class ProfilesController < ApplicationController
     def update
         @user = User.find(params[:user_id])
         @profile = @user.profile
-        if @profile.update_attributes(profile_params)
-            flash[:success] = "Your profile has been successfully updated!"
-            redirect_to user_path( id: params[:user_id] )
+        if params[:glyphtag]
+            if @profile.update_attributes(profile_params)
+                flash[:success] = "Your profile has been successfully updated!"
+                redirect_to user_path( id: params[:user_id] )
+            else
+                render action: :edit
+            end
         else
-            render action: :edit
+            toggle_freeagent
         end
     end
     
+    
+        
     private
         def profile_params
             params.require(:profile).permit(:username, :glyphtag, :favorite_role, :favorite_freelancer, :bio, :avatar)
@@ -47,5 +53,13 @@ class ProfilesController < ApplicationController
         def only_current_user
             @user = User.find(params[:user_id])
             redirect_to(root_url) unless @user == current_user
+        end
+        
+        def toggle_freeagent
+        @profile = current_user.profile
+            if @profile.update_attributes(freeagent: !@profile.freeagent)
+                flash[:notice] = "Free Agent status updated!"
+                redirect_to root_path
+            end
         end
 end

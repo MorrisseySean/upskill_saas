@@ -3,6 +3,7 @@
     height: 128px;
     border: 1px solid #5cb85c;
     border-radius: 5px;
+    margin-top: 16px;
     
 }
 
@@ -26,13 +27,22 @@
 }
 
 .well.profile-description {
-    background-color: #5cb85c;
+    background-color: #404040;
     border-color: #4cae4c;
 }
 
-.well.profile-contacts {
-    background-color: #5bc0de;
-    border-color: #46b8da;
+.profile-title {
+    margin-top: 16px;
+    background-color: #343434;
+    border: 2px solid #4cae4c;
+    border-radius: 5px;
+}
+
+.profile-fl-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    box-shadow: 0 0 5px 2px #4cae4c;
 }
 
 /// User index page styles

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214150534) do
+ActiveRecord::Schema.define(version: 20161220032803) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "freelancer_id"
@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(version: 20161214150534) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "freeagent",           default: false
   end
 
   create_table "users", force: :cascade do |t|

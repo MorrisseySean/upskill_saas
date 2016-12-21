@@ -15,9 +15,9 @@
     <%  
         select_fields = Array.new()
         @freelancers.each do |char|
-            select_fields << char.name
+            select_fields << [char.name, char.id]
         end 
-        select_fields << "None"
+        select_fields << ["None", 0]
     %>
     <div class = 'form-group'>
         <%= f.label :favorite_freelancer %>

@@ -1,0 +1,44 @@
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 col-md-offset-3 well">
+            <h1 class = "text-center">Welcome to the PPL!</h1>
+            <p>
+                The Prep Phase League(PPL) is an ongoing competitive environment
+                for Atlas Reactor. In the PPL, teams compete over the course of 
+                6 weeks by choosing to enter in to weekly events to earn points.
+                There will be two weekly events, one at 17:00PST on Saturday, 
+                the other at 18:00BST on Sunday to accommodate different 
+                time-zones. Teams can sign up to one event per week and events 
+                will consist of 2 matches, each match being a best of 2 series.
+                <br/><br/>
+                In order to compete in the PPL, each player must sign up 
+                individually and then form a team of at least 4 members. The 
+                team captain who created the team will then be allowed to sign 
+                up to one of the two available weekly events. Rules regarding 
+                the league can be found on the rules page
+                <br/><br/>
+                By joining the league you agree to the rules and regulations set
+                out by the PPL staff. These rules can be found here
+            </p>
+            <br/>
+            <% if user_signed_in? %>
+                <% if current_user.profile.glyphtag %>
+                    <% if current_user.profile.freeagent == false %>
+                        <%= form_for current_user.profile, url: user_profile_path(user_id: current_user.id) do |f| %>
+                            <%= f.submit "Sign up to play!", class: "btn btn-block btn-warning" %>
+                        <% end %>
+                    <% else %>
+                        <%= link_to "Create A Team!", '#', class: 'btn btn-block btn-info' %>
+                    <% end %>
+                <% else %>
+                    <p>Add a glyphtag to your profile to sign up to the PPL!</p>
+                    <%= link_to "Update Your Profile", edit_user_profile_path(user_id: current_user.id), class: 'btn btn-block btn-info' %>
+                <% end %>
+            <% else %>
+                <p>You must sign up to Prep Phase before joining the league</p>
+                <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-block btn-info' %>
+            <% end %>
+        
+        </div>
+    </div>
+</div>

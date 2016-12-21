@@ -1,12 +1,12 @@
-<div class="container-fluid text-center home-callout">
+<!--<div class="container-fluid text-center home-callout">
     <h1>Welcome to Prep Phase</h1>
     <h3>The home page for all your Atlas Reactor needs!</h3>
-</div>
+</div> -->
 <div class="container home-sign-up-links">
     <div class="row">
             <div class="col-md-8">
                 <div class="well well-home row">
-                    <h2 class="text-center">Freelancers</h2>
+                    <h3 class="text-center">Freelancers</h3>
                     <div class = "text-center">
                     <% @freelancers.each do |char| %>
                         <%= link_to freelancer_path(id: char.id) do %>
@@ -38,7 +38,7 @@
                         <% if current_user.profile %>
                             <h2 class="text-center">Get Involved</h2>
                             <%= link_to "Create a Guide", '#', class: 'btn btn-block btn-info' %>
-                            <%= link_to "Join the PPL", '#', class: 'btn btn-block btn-success' %>
+                            <%= link_to "Join the PPL", ppl_path, class: 'btn btn-block btn-success' %>
                         <% else %>
                             <h2 class = "text-center">Your Profile</h2>
                             <p>Create your profile to start taking part in the community!</p>
