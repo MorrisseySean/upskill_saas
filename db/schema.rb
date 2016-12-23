@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220032803) do
+ActiveRecord::Schema.define(version: 20161223081412) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "freelancer_id"
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 20161220032803) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "freeagent",           default: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "firepower",           default: false
+    t.boolean  "frontline",           default: false
+    t.boolean  "support",             default: false
+    t.boolean  "any",                 default: true
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

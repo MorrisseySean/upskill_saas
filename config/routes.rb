@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :freelancers do
     resource :ability
   end
+  resources :teams
   get 'about', to: 'pages#about'
   get 'admin', to: 'pages#admin'
   get 'ppl', to: 'pages#leaguesignup'

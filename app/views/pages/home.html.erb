@@ -37,7 +37,7 @@
                     <% if user_signed_in? %>
                         <% if current_user.profile %>
                             <h2 class="text-center">Get Involved</h2>
-                            <%= link_to "Create a Guide", '#', class: 'btn btn-block btn-info' %>
+                            <%= link_to "Create a Guide", new_team_path, class: 'btn btn-block btn-info' %>
                             <%= link_to "Join the PPL", ppl_path, class: 'btn btn-block btn-success' %>
                         <% else %>
                             <h2 class = "text-center">Your Profile</h2>
