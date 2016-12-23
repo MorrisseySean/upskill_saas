@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
     def update
         @user = User.find(params[:user_id])
         @profile = @user.profile
-        if params[:glyphtag]
+        if params[:profile]
             if @profile.update_attributes(profile_params)
                 flash[:success] = "Your profile has been successfully updated!"
                 redirect_to user_path( id: params[:user_id] )

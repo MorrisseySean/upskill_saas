@@ -8,4 +8,15 @@ module UsersHelper
             "<i class='fa fa-dollar'></i>".html_safe
         end
     end
+    
+    # Disables a button if users are currently on the associated page
+    def disable_button(type)
+        if type.downcase == params['type']
+            "disabled"
+        elsif type == "All" && !params['type']
+            "disabled"
+        else
+            ""
+        end
+    end
 end

@@ -15,4 +15,7 @@ class PagesController < ApplicationController
             redirect_to root_url
         end
     end
+    
+    def leaguesignup
+    end
 end

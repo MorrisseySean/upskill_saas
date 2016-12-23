@@ -47,11 +47,68 @@
 
 /// User index page styles
 .user-index-avatar {
-    width: 128px;
-    height: 128px;
-    border-radius: 64px;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    margin-top: 6px;
 }
 
-.well.white-bg {
-    background-color: white;
+.well-index {
+    padding: 4px;
+    h3 {
+        margin-top: 4px;
+    }
+    .btn {
+        margin-top: 16px;
+    }
+}
+
+.well.light-bg {
+    background-color: #444444;
+}
+
+.well.well-select {
+    margin-bottom: 0;
+}
+
+/// Label and button styles
+.label-support, .btn-sp {
+    background-color: purple;
+}
+
+.label-firepower, .btn-fp{
+    background-color: red;
+}
+
+.label-frontline, .btn-fl {
+    background-color: green;
+}
+
+.label-generalist, .btn-ge {
+    background-color: blue;
+}
+
+.btn-fp, .btn-sp, .btn-fl, .btn-ge {
+    color: white;
+}
+
+.btn-invite {
+    margin-top: 32px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+// Index styles
+.index-user-desc {
+    font-size: 2.5vw;
+    h3{
+        margin-bottom: 5px;
+    }
+}
+
+.index-label {
+    font-size: 1vw;
+    margin-top: -16px;
 }

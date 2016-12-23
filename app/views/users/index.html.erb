@@ -1,35 +1,72 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-md-8 col-md-offset-2">
-      <h1>devMatch Community</h1>
-      <p>Welcome to the devMatch community page!</p>
+      <h1>Prep Phase Free Agents</h1>
+      <p>Here is a list of players not yet on a team!</p>
+      <div class = "row well-select">
+        <div class = "col-sm-2 col-sm-offset-1">
+          <%= link_to "All", users_path(last_id: 0), class: 'btn btn-block btn-default ' << disable_button("All") %>
+        </div>
+        <div class = "col-sm-2">
+          <%= link_to "Firepower", users_path(last_id: 0, type: "firepower"), class: 'btn btn-block btn-fp ' << disable_button("Firepower") %>
+        </div>
+        <div class = "col-sm-2">
+          <%= link_to "Frontline", users_path(last_id: 0, type: "frontline"), class: 'btn btn-block btn-fl ' << disable_button("Frontline") %>
+        </div>
+        <div class = "col-sm-2">
+          <%= link_to "Support", users_path(last_id: 0, type: "support"), class: 'btn btn-block btn-sp ' << disable_button("Support") %>
+        </div>
+        <div class = "col-sm-2">
+          <%= link_to "Generalist", users_path(last_id: 0, type: "generalist"), class: 'btn btn-block btn-ge ' << disable_button("Generalist") %>
+        </div>
+      </div>
+      <br/>
+      
+      
+      
       <ul class = "list-unstyled">
-        <% @users.each do |user| %>
-          <% if user.profile %>
+        <% @users.each do |profile| %>
+          <% if profile && profile.freeagent%>
             <li>
-              <div class = "row well <%= cycle('', 'white-bg') %>" %>
-                <div class = "col-sm-4 text-center">
-                  <% if user.profile.avatar %>
-                    <%= link_to user do %>
-                      <%= image_tag user.profile.avatar.url, class: 'user-index-avatar' %>
+              <div class = "row well well-index <%= cycle('', 'light-bg') %>" %>
+                <div class = "col-sm-2 text-center">
+                  <% if profile.avatar %>
+                    <%= link_to user_path(id: profile.user_id) do %>
+                      <%= image_tag profile.avatar.url, class: 'user-index-avatar' %>
                     <% end %>
                   <% end %>
                 </div>
-                <div>
-                  <%= link_to user do %>
-                    <h2><%= user.profile.first_name %> <%= user.profile.last_name %></h2>
+                <div class = "col-sm-7">
+                  <%= link_to user_path(id: profile.user_id) do %>
+                    <span class = "index-user-desc"><%= profile.username %></span>
+                    <h5><i>(<%= profile.glyphtag %>)</i>&emsp;
+                      <span class = "label index-label label-<%= profile.favorite_role.downcase %>">
+                        <%= profile.favorite_role %>
+                      </span>
+                    </h5>
                   <% end %>
                 </div>
-                <p>
-                  <%= user.profile.job_title %>
-                  <% if user.plan_id == 2 %>
-                    <span class = 'label label-danger'>Pro Account</span>
-                  <% end %>
-                </p>
+                <div class = "col-sm-3 text-center">
+                  <%= link_to "Invite Player", '#', class: "btn btn-info btn-invite" %>
+                </div>
               </div>
             </li>
           <% end %>
         <% end %>
+        <div class = "row">
+          <div class = "col-md-6">
+            <% if @prev_id %>
+              <%= link_to "Previous Page", users_path(last_id: @prev_id, type: params[:type]), class: 'btn btn-block btn-default' %>
+            <% end %>
+          </div>
+          <div class = "col-md-6">
+            <% if @more == true %>
+              <%= link_to "Next Page", users_path(last_id: @last_id, type: params[:type]), class: 'btn btn-block btn-default' %>
+            <% end %>
+          </div>
+          
+        </div>
+        
       </ul>
     </div>
   </div>

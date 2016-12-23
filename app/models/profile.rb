@@ -1,5 +1,6 @@
 class Profile < ActiveRecord::Base
     belongs_to  :user
+    belongs_to  :team, required: false
     has_many    :guides
     
     has_attached_file   :avatar,
