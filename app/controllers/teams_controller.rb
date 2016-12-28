@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
     def create
         @team = Team.new(profile_params)
         if @team.save
+            current_user.profile.update_attributes(team_id: @team.id)
             flash[:success] = "Your team, #{@team.name}, has been successfully created!"
             redirect_to team_path( id: @team.id )
         else
