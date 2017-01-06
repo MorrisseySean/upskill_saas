@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   
   # Get a list of freelancer names
   before_filter :get_chars
-    
+  before_filter :get_messages
+  
   protected
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:stripe_card_token, :email, :password, :password_confirmation) }
@@ -16,6 +17,12 @@ class ApplicationController < ActionController::Base
   public
     def get_chars
       @freelancers = Freelancer.all
+    end
+    
+    def get_messages
+      if user_signed_in?
+        @num_msg = Message.where("user_id = ?", current_user.id).size
+      end
     end
     
     

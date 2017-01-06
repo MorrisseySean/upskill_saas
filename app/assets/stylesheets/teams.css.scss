@@ -1,0 +1,30 @@
+.team-member-div {
+    :hover {
+        background-color: #333333;
+    }
+}
+
+.team-member-box {
+    border-right: 1px solid green;
+    padding: 4px;
+    text-align: center;
+    img {
+        width: 96px;
+        height: 96px;
+        border-radius: 48px;
+    }
+    
+}
+
+.team-sidebar {
+    p {
+        text-align: justify;
+        border-left: 1px solid green;
+        padding: 4px;
+    }
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 5%;
+    }
+}

@@ -7,6 +7,7 @@ class TeamsController < ApplicationController
     
     def show
         @team = Team.find(params[:id])
+        @team_members = Profile.where("team_id = ?", @team.id)
     end
     
     def create

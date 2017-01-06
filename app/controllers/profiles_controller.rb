@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
     def create
         # Create a profile linked to this user
         @profile = current_user.build_profile(profile_params)
+        @profile.team_id = 0
         if @profile.save
             flash[:success] = "Your profile has been successfully updated!"
             redirect_to user_path( id: params[:user_id] )

@@ -1,7 +1,7 @@
 class Team < ApplicationRecord
     
-    has_many :profiles
-    belongs_to :user, required: false
+    has_many    :profiles
+    belongs_to  :user, required: false
     
     has_attached_file   :avatar,
                         :styles => { :medium => "300x300>", :thumb => "100x100>"},

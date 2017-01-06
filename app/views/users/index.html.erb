@@ -47,7 +47,12 @@
                   <% end %>
                 </div>
                 <div class = "col-sm-3 text-center">
-                  <%= link_to "Invite Player", '#', class: "btn btn-info btn-invite" %>
+                  <% if @captain == true %>
+                    <%= form_for @message, url: user_messages_path(user_id: profile.user_id), :html => { :multipart => true } do |f| %>
+                      <%= f.hidden_field :user_id, :value => profile.user_id %>
+                      <%= submit_tag( "Invite Player", class: "btn btn-info" ) %>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             </li>

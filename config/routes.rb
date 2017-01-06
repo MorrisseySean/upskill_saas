@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :users do 
     resource :profile
+    resources :messages
   end
   resources :freelancers do
     resource :ability

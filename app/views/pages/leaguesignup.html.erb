@@ -28,7 +28,7 @@
                             <%= f.submit "Sign up to play!", class: "btn btn-block btn-warning" %>
                         <% end %>
                     <% else %>
-                        <%= link_to "Create A Team!", '#', class: 'btn btn-block btn-info' %>
+                        <%= link_to "Create A Team!", new_team_path, class: 'btn btn-block btn-info' %>
                     <% end %>
                 <% else %>
                     <p>Add a glyphtag to your profile to sign up to the PPL!</p>
