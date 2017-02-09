@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228072726) do
+ActiveRecord::Schema.define(version: 20170106062146) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "freelancer_id"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20161228072726) do
     t.integer  "team_id"
     t.string   "subject"
     t.text     "body"
-    t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "msg_type"
   end
 
   create_table "mods", force: :cascade do |t|
