@@ -9,10 +9,10 @@ class PagesController < ApplicationController
     def admin
         if user_signed_in?
             if current_user.user_type != "admin"
-                redirect_to root_url
+                #redirect_to root_url
             end
         else
-            redirect_to root_url
+            #redirect_to root_url
         end
     end
     
