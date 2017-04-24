@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   
   # Get a list of freelancer names
   before_filter :get_chars
+  
     
   protected
     def configure_permitted_parameters
