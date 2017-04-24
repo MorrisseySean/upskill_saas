@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     
   public
     def get_chars
-      #@freelancers = Freelancer.all
+      @freelancers = Freelancer.all
     end
     
     
