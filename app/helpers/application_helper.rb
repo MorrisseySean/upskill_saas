@@ -1,5 +1,5 @@
 module ApplicationHelper
-     def update_freelancers
+    def update_freelancers
         url = 'https://www.atlasreactorgame.com/en/characters/'
         doc = Nokogiri::HTML(open(url))
         char_names = doc.css('.character-sub-header')
