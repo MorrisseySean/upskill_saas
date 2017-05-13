@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
     
     private
         def profile_params
-            params.require(:team).permit(:user_id, :name, :description, :avatar)
+            params.require(:team).permit(:user_id, :name, :description, :firepower, :frontline, :support, :any, :avatar)
         end
 
 end

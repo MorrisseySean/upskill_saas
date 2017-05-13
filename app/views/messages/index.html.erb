@@ -12,6 +12,7 @@
                         <div class = "col-md-2 text-center">
                             <%= form_for m, url: user_message_path(user_id: current_user.profile.user_id, id: m.id), :html => { :multipart => true } do |f| %>
                                 <%= f.hidden_field :response, value: "accept" %>
+                                <%= f.hidden_field :team, value: m.team_id %>
                                 <%= submit_tag( "Accept", class: "btn btn-success" ) %>
                             <% end %>
                         </div>
@@ -24,6 +25,13 @@
                     </div>
                 </div>
             <% end %>
+            <div class = "well well-inbox">
+                <div class = "row">
+                        <div class = "col-md-8">
+                            <h4>No More Messages</h4>
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

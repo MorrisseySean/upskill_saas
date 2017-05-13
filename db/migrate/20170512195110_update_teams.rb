@@ -1,6 +1,7 @@
-class CreateTeams < ActiveRecord::Migration[5.0]
+class UpdateTeams < ActiveRecord::Migration[5.0]
   
   def change
+    drop_table :teams
     
     create_table :teams do |t|
       t.integer     :user_id
@@ -14,3 +15,4 @@ class CreateTeams < ActiveRecord::Migration[5.0]
     end
   end
 end
+

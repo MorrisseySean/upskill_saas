@@ -15,6 +15,17 @@
                         <%= f.text_area :description, class: 'form-control' %>
                     </div>
                     <div class = 'form-group'>
+                        <h4>Looking For</h4>
+                            <%= f.label :firepower %>
+                                <%= f.check_box :firepower, value: false %> &emsp;
+                            <%= f.label :frontline %>
+                                <%= f.check_box :frontline, value: false %> &emsp;
+                            <%= f.label :support %>
+                                <%= f.check_box :support, value: false %> &emsp;
+                            <%= f.label "Generalist" %>
+                                <%= f.check_box :any, value: true %> &emsp;
+                    </div>
+                    <div class = 'form-group'>
                         <%= f.label :avatar %>
                         <%= f.file_field :avatar%>
                     </div>

@@ -40,11 +40,32 @@ class MessagesController < ApplicationController
     end
     
     def update
-        if params[:response] == "accept"
-            flash[:notice] = "Accepted"
-            redirect_to users_path
-        elsif params[:response] == "decline"
-            flash[:notice] = "Declined"
+        # If the user has clicked accept on the message
+        if params[:message][:response] == "accept"
+            # Find the team who sent the message
+            @team = Team.find(params[:message][:team])
+            # Check to see if the team is full
+            if @team.profiles.count < 6
+                # Update profile record to add user to team
+                Profile.where(:user_id => current_user.id).update_all( :team_id => @team.id)
+                # Delete message from database an flash a confirmation message
+                Message.find(params[:id]).destroy
+                flash[:notice] = "Congratulations! You've joined " + @team.name + "!"
+                # Redirect user to their new team
+                redirect_to team_path( id: @team.id )
+            else
+                # Delete message from database an flash a reponse message
+                Message.find(params[:id]).destroy
+                flash[:notice] = "Sorry, this team is full"
+                redirect_to user_messages_path( current_user.id )
+            end
+        # If the user declines the message, delete the message and refresh the page 
+        elsif params[:message][:response] == "decline"
+            flash[:notice] = "You declined the team invite"
+            Message.find(params[:id]).destroy
+            redirect_to user_messages_path(:current_user.id)
+        elsif
+            flash[:notice] = "We're sorry, something went wrong, please try again later"
             redirect_to users_path
         end
     end
