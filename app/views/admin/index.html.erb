@@ -1,0 +1,43 @@
+<div class = "container">
+    <h2>Admin Control Panel</h2>
+    <div class = "row">
+        <div class = "col-md-4">
+            <div class = "well">
+                <h3>Create Event</h3>
+                <%= form_for @event, url: admin_index_path, :html => { :multipart => true } do |f| %>
+                    <div class = 'form-group'>
+                        <%= f.label 'Event Name' %>
+                        <%= f.text_field :name, class: 'form-control' %>
+                    </div>
+                    <div class = 'form-group'>
+                        <%= f.label 'Date' %>
+                        <%= f.text_field :date, class: 'form-control' %>
+                    </div>
+                    <div class = 'form-group'>
+                        <%= f.label 'Time' %>
+                        <%= f.text_field :time, class: 'form-control' %>
+                    </div>
+                    <div class = 'form-group'>
+                        <%= f.label 'Type' %>
+                        <%= f.select :event_type,['League', 'Casual'], {}, class: 'form-control' %>
+                    </div>
+                    <div class = 'form-group'>
+                        <%= f.label 'No of Matches' %>
+                        <%= f.select :num_matches, [1, 2, 3, 4, 5], {}, class: 'form-control' %>
+                    </div>
+                    <%= f.hidden_field(:form, value: 'create_event') %>
+                    <div class = 'form-group'>
+                        <%= f.submit "Create Event", class: "btn btn-primary" %>
+                    </div>
+                <% end %>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+        </div>
+    </div>
+</div>

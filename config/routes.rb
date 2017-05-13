@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :teams
   get 'about', to: 'pages#about'
-  get 'admin', to: 'pages#admin'
+  resources :admin
   get 'ppl', to: 'pages#leaguesignup'
   resources :contacts, only: :create
   get 'contact-us', to: 'contacts#new', as: 'new_contact'

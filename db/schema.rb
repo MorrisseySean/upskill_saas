@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512195110) do
+ActiveRecord::Schema.define(version: 20170513201828) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "freelancer_id"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20170512195110) do
     t.string   "range"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.string   "date"
+    t.string   "time"
+    t.integer  "num_matches"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "event_type"
+    t.integer  "league_id"
   end
 
   create_table "freelancers", force: :cascade do |t|
@@ -81,6 +92,11 @@ ActiveRecord::Schema.define(version: 20170512195110) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "teams_events", id: false, force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "event_id"
   end
 
   create_table "users", force: :cascade do |t|

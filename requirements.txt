@@ -7,6 +7,17 @@ Events
     ** Freelancers picked/banned
     ** Match Result screenshot
     ** Match Result
+    
 * League
     ** Sign-ups
     ** Leaderboard
+    
+* Team Pages
+    ** Edit 
+    ** Index page
+    ** Team statistics
+    ** Formatting player boxes
+
+* Misc
+    ** My Team showing when player doesn't have a team
+    ** Editable global value for team size

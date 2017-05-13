@@ -14,7 +14,7 @@
                         :html => { :multipart => true } do |f| 
                     %>
                         <%= f.hidden_field :button, value: "delete" %>
-                        <%= submit_tag( "Delete Team", class: "btn btn-danger" ) %>
+                        <%= submit_tag( "Delete Team", class: "btn btn-block btn-danger" ) %>
                     <% end %>
                 </div>
             <% end %>
@@ -28,9 +28,8 @@
                     <div class = "col-md-4 team-member-box">
                         <%= link_to user_path(id: member.user_id) do %>
                         <div class = 'row'>
-                        <%= image_tag member.avatar %>
-                        <h4><%= member.username %></h4>
-                        
+                            <%= image_tag member.avatar %>
+                            <h4><%= member.username %></h4>
                         </div>
                         <% end %>
                         <div class = 'row'>
