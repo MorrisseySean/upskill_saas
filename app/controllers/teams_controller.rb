@@ -22,6 +22,19 @@ class TeamsController < ApplicationController
         end
     end
     
+    def update
+        @team = Team.find(:id)
+        if params[:team][:button] == 'leave'
+            Profile.where(:user_id => current_user.id).update_all(:team_id => 0)
+            flash[:success] = "You have left " + @team.name
+            redirect_to team_path( params[:id] )
+        elsif params[:team][:button] = 'kick'
+            Profile.where(:user_id => params[:team][:member]).update_all(:team_id => 0)
+            flash[:success] = "Player kicked from " + @team.name
+            redirect_to team_path( params[:id] )
+        end
+    end
+
     private
         def profile_params
             params.require(:team).permit(:user_id, :name, :description, :firepower, :frontline, :support, :any, :avatar)

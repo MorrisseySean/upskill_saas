@@ -18,21 +18,31 @@
             <h2>Team Members</h2>
             <div class = "row team-member-div">
                 <% @team_members.each do |member| %>
-                    <%= link_to user_path(id: member.user_id) do %>
-                        <div class = "col-md-4 team-member-box">
-                            <%= image_tag member.avatar %>
-                            <h4><%= member.username %></h4>
-                            <% if member.user_id == @team.user_id %>
-                                <span class = "label label-warning">Captain</span>
-                            <% end %>
-                            <% if member.user_id == current_user.id %>
-                                <br/><br/><%= link_to "Leave Team", '#', class: "btn btn-danger" %>
-                            <% elsif current_user.id == @team.user_id %>
-                                <br/><br/><%= link_to "Remove Player", '#', class: "btn btn-danger" %>
-                            <% end %>
-                        </div>
+                    <div class = "col-md-4 team-member-box">
+                        <%= link_to user_path(id: member.user_id) do %>
+                        <div class = 'row'>
+                        <%= image_tag member.avatar %>
+                        <h4><%= member.username %></h4>
                         
-                    <% end %>
+                        </div>
+                        <% end %>
+                        <div class = 'row'>
+                        <% if member.user_id == @team.user_id %>
+                            <span class = "label label-warning">Captain</span>
+                        <% elsif member.user_id == current_user.id %>
+                            <%= form_for @team, url: team_path( id: @team.id ), :html => { :multipart => true } do |f| %>
+                                <%= f.hidden_field :button, value: "leave" %>
+                                <%= submit_tag( "Leave Team", class: "btn btn-danger" ) %>
+                            <% end %>
+                        <% elsif current_user.id == @team.user_id %>
+                            <%= form_for @team, url: team_path( id: @team.id ), :html => { :multipart => true } do |f| %>
+                                <%= f.hidden_field :button, value: "kick" %>
+                                <%= f.hidden_field :member, value: member.user_id %>
+                                <%= submit_tag( "Kick Player", class: "btn btn-danger" ) %>
+                            <% end %>
+                        <% end %>
+                        </div>
+                    </div>
                 <% end %>
             </div>
         </div>
