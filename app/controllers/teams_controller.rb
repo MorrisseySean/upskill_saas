@@ -23,15 +23,20 @@ class TeamsController < ApplicationController
     end
     
     def update
-        @team = Team.find(:id)
+        @team = Team.find(params[:id])
         if params[:team][:button] == 'leave'
             Profile.where(:user_id => current_user.id).update_all(:team_id => 0)
             flash[:success] = "You have left " + @team.name
             redirect_to team_path( params[:id] )
-        elsif params[:team][:button] = 'kick'
+        elsif params[:team][:button] == 'kick'
             Profile.where(:user_id => params[:team][:member]).update_all(:team_id => 0)
             flash[:success] = "Player kicked from " + @team.name
             redirect_to team_path( params[:id] )
+        elsif params[:team][:button] == 'delete'
+            Profile.where(:team_id => @team.id).update_all(:team_id => 0)
+            Team.where(:id => @team.id).update_all(:user_id => 0)
+            flash[:success] = @team.name + "has been deleted :("
+            redirect_to root_path
         end
     end
 

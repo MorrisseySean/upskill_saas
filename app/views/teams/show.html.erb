@@ -8,7 +8,14 @@
                 <div class = "well admin-well">
                     <h3>Admin Panel</h3>
                     <%= link_to "Edit Team", edit_team_path(id: @team.id), class: "btn btn-warning btn-block" %>
-                    <%= link_to "Delete Team", edit_team_path(id: @team.id), class: "btn btn-danger btn-block" %>
+                    <%= form_for @team, 
+                        url: team_path( id: @team.id ),
+                        data: {confirm: "Are you sure you want to delete " + @team.name + "?"},
+                        :html => { :multipart => true } do |f| 
+                    %>
+                        <%= f.hidden_field :button, value: "delete" %>
+                        <%= submit_tag( "Delete Team", class: "btn btn-danger" ) %>
+                    <% end %>
                 </div>
             <% end %>
             <p><%= @team.description %></p>
@@ -30,12 +37,20 @@
                         <% if member.user_id == @team.user_id %>
                             <span class = "label label-warning">Captain</span>
                         <% elsif member.user_id == current_user.id %>
-                            <%= form_for @team, url: team_path( id: @team.id ), :html => { :multipart => true } do |f| %>
+                            <%= form_for @team, 
+                                        url: team_path( id: @team.id ),
+                                        data: {confirm: "Are you sure you want to leave " + @team.name + "?"},
+                                        :html => { :multipart => true } do |f| 
+                            %>
                                 <%= f.hidden_field :button, value: "leave" %>
                                 <%= submit_tag( "Leave Team", class: "btn btn-danger" ) %>
                             <% end %>
                         <% elsif current_user.id == @team.user_id %>
-                            <%= form_for @team, url: team_path( id: @team.id ), :html => { :multipart => true } do |f| %>
+                            <%= form_for @team, 
+                                        url: team_path( id: @team.id ),
+                                        data: {confirm: "Are you sure you want to kick " + member.username + "?"},
+                                        :html => { :multipart => true } do |f| 
+                            %>
                                 <%= f.hidden_field :button, value: "kick" %>
                                 <%= f.hidden_field :member, value: member.user_id %>
                                 <%= submit_tag( "Kick Player", class: "btn btn-danger" ) %>
