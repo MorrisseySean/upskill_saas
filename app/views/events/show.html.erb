@@ -1,0 +1,47 @@
+<div class = 'container'>
+  <div class = 'row well'>
+    <h1><%= @event.name %></h1>
+    <div class = "col-md-3">
+      <h3>Event Details</h3>
+      <p>
+        <%= @event.event_type %> Event<br/>
+        Date: <%= @event.date %><br/>
+        Time: <%= @event.time %><br/>
+        Matches: <%= @event.num_matches %>
+      </p>
+    </div>
+    <div class = "col-md-9">
+      <h3>Teams</h3>
+      <% @teams.each do |t| %>
+        
+        <div class = "row">
+          <div class = "col-md-6">
+            <%= link_to team_path(id: t.id) do %>
+            <%= image_tag t.avatar.url, class: 'user-index-avatar'%>
+            &emsp;<%= t.name %>
+            <% end %>
+          </div>
+          <div class = "col-md-2">
+            Wins: 0&emsp;Losses: 0&emsp;Points: 0
+          </div>
+          <div class = "col-md-4">
+            <% if user_signed_in? %>
+             <!-- If user owns the team they can remove them from the event -->
+              <% if t.user_id == current_user.id %>
+                <div class = "btn btn-danger">
+                  Leave Event
+                </div>
+              <!-- Admins can remove teams from events -->
+              <% elsif current_user.user_type == "admin" %>
+                <div class = "btn btn-danger">
+                  Remove Team
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <br/><br/>
+      <% end %>
+    </div>
+  </div>
+</div>

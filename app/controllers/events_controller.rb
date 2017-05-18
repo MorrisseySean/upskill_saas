@@ -2,7 +2,7 @@ class EventsController < ApplicationController
     def index
       @events = Event.all
       
-     # Check if user is able to invite players to a team
+     # Check if user is the captain of a team which can sign up to an event
       @captain = false
       if user_signed_in?
           if current_user.profile 
@@ -19,6 +19,11 @@ class EventsController < ApplicationController
       end
         
       @event = Event.new
+    end
+    
+    def show
+      @event = Event.find(params[:id])
+      @teams = @event.teams
     end
     
     def update
