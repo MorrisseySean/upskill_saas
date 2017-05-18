@@ -9,7 +9,7 @@ class EventsController < ApplicationController
               if current_user.profile.team_id > 0
                   team = Team.find(current_user.profile.team_id)
                   if current_user.id == team.user_id
-                      if Profile.where("team_id = ?", team.id).size < 6
+                      if team.profiles.count >= 4
                           @captain = true
                           @message = Message.new()
                       end
@@ -23,8 +23,14 @@ class EventsController < ApplicationController
     
     def update
       @event = Event.find(params[:id])
-      @new_team = Team.where(:id => params[:event][:team_id])
-      @event.teams << @new_team
+      @new_team = Team.find(params[:event][:team_id])
+      @event_teams = @event.teams
+      if @event_teams.include?@new_team
+        flash[:danger] = "Your team is already signed up for " + @event.name + "!"
+      else
+        @event.teams << @new_team
+        flash[:success] = "Your team has signed up for " + @event.name + "!"
+      end
       redirect_to team_path( params[:event][:team_id] )
     end
 end
