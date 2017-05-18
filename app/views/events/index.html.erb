@@ -1,0 +1,34 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-8 col-md-offset-2">
+      <h1>Prep Phase Events</h1>
+      <ul class = "list-unstyled">
+        <% @events.each do |e| %>
+        <li>
+          <div class = "row well well-index <%= cycle('', 'light-bg') %>" %>
+            <%= link_to root_path do %>
+            <div class = "col-sm-8 ">
+                <span class = "index-user-desc"><%= e.name %></span>
+                <h5><i>(<%= e.date %> <%= e.time %>) </i>&emsp;
+                  <span class = "label index-label">
+                    <%= e.event_type %>
+                  </span>
+                </h5>
+            </div>
+            <% end %>
+            <% if @captain %>
+            <div class = "col-sm-4">
+              <%= form_for e, url: event_path(id: e.id), :html => { :multipart => true } do |f| %>
+                <%= f.hidden_field :team_id, :value => current_user.profile.team_id %>
+                <%= f.hidden_field :event_id, :value => e.id %>
+                <%= submit_tag( "Sign Up", class: "btn btn-info" ) %>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
