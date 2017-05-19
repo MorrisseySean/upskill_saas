@@ -27,15 +27,13 @@
           <div class = "col-md-4">
             <% if user_signed_in? %>
              <!-- If user owns the team they can remove them from the event -->
-              <% if t.user_id == current_user.id %>
-                <div class = "btn btn-danger">
-                  Leave Event
-                </div>
+              <% if (t.user_id == current_user.id) || (current_user.user_type == "admin") %>
+                <%= form_for @event, url: event_path(id: @event.id), :html => { :multipart => true } do |f| %>
+                  <%= f.hidden_field :msg, :value => "leave" %>
+                  <%= f.hidden_field :team_id, :value => t.id %>
+                  <%= submit_tag( "Remove Team", class: "btn btn-danger" ) %>
+                <% end %>
               <!-- Admins can remove teams from events -->
-              <% elsif current_user.user_type == "admin" %>
-                <div class = "btn btn-danger">
-                  Remove Team
-                </div>
               <% end %>
             <% end %>
           </div>

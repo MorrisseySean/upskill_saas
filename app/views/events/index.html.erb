@@ -20,7 +20,7 @@
             <div class = "col-sm-4">
               <%= form_for e, url: event_path(id: e.id), :html => { :multipart => true } do |f| %>
                 <%= f.hidden_field :team_id, :value => current_user.profile.team_id %>
-                <%= f.hidden_field :event_id, :value => e.id %>
+                <%= f.hidden_field :msg, :value => "join" %>
                 <%= submit_tag( "Sign Up", class: "btn btn-info" ) %>
               <% end %>
             </div>
