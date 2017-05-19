@@ -3,6 +3,7 @@ class Team < ApplicationRecord
     has_many    :profiles
     belongs_to  :user, required: false
     has_and_belongs_to_many :events
+    has_and_belongs_to_many :matches
     
     has_attached_file   :avatar,
                         :styles => { :medium => "300x300>", :thumb => "100x100>"},

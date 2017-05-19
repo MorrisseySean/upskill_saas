@@ -11,6 +11,7 @@ class EventsController < ApplicationController
       is_captain
       @event = Event.find(params[:id])
       @teams = @event.teams
+      @match = Match.new()
     end
     
     def update

@@ -16,14 +16,16 @@
           <%= form_for @event, url: event_path(id: @event.id), :html => { :multipart => true } do |f| %>
             <%= f.hidden_field :team_id, :value => current_user.profile.team_id %>
             <%= f.hidden_field :msg, :value => "join" %>
-            <%= submit_tag( "Sign Up", class: "btn btn-info" ) %>
+            <%= submit_tag( "Sign Up", class: "btn btn-info text-center" ) %>
           <% end %>
         <% end %>
         <% if current_user.user_type == "admin" %>
           <%= form_for @event, url: event_path(id: @event.id), :html => { :multipart => true } do |f| %>
             <%= f.hidden_field :msg, :value => "close" %>
-            <%= submit_tag( "Toggle Event", class: "btn btn-info" ) %>
+            <%= submit_tag( "Toggle Event", class: "btn btn-warning text-center" ) %>
           <% end %>
+          <br/>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#match_modal">Create Match</button>
         <% end %>
       <% end %>
     </div>
@@ -65,6 +67,25 @@
         </div>
         <br/><br/>
       <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="match_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Match</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'form' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>

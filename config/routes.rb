@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   
   resources :teams
+  resources :matches
   resources :admin
   resources :events
   

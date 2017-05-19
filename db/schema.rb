@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519171215) do
+ActiveRecord::Schema.define(version: 20170519195924) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "freelancer_id"
@@ -48,6 +48,42 @@ ActiveRecord::Schema.define(version: 20170519171215) do
     t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "freelancers_matches", id: false, force: :cascade do |t|
+    t.integer "freelancer_id"
+    t.integer "event_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "round"
+    t.integer  "home_team"
+    t.string   "map_ban"
+    t.string   "map_pick"
+    t.string   "home_pb_file_name"
+    t.string   "home_pb_content_type"
+    t.integer  "home_pb_file_size"
+    t.datetime "home_pb_updated_at"
+    t.string   "away_pb_file_name"
+    t.string   "away_pb_content_type"
+    t.integer  "away_pb_file_size"
+    t.datetime "away_pb_updated_at"
+    t.string   "home_end_file_name"
+    t.string   "home_end_content_type"
+    t.integer  "home_end_file_size"
+    t.datetime "home_end_updated_at"
+    t.string   "away_end_file_name"
+    t.string   "away_end_content_type"
+    t.integer  "away_end_file_size"
+    t.datetime "away_end_updated_at"
+    t.integer  "win_team"
+    t.integer  "away_team"
+    t.integer  "event_id"
+  end
+
+  create_table "matches_teams", id: false, force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "match_id"
   end
 
   create_table "messages", force: :cascade do |t|
