@@ -1,0 +1,33 @@
+<div class = "container">
+  <div class = "row well">
+    
+    <div class = "col-md-4 text-center">
+      <h2>Match <%= @match.round %> </h2>
+      <%= image_tag @home_team.avatar, class: 'user-index-avatar' %>
+      &emsp;V&emsp; 
+      <%= image_tag @home_team.avatar, class: 'user-index-avatar' %>
+      <br/>
+      <br/>
+      Map Ban : TBD     <br/>
+      Map Pick : TBD    <br/><br/>
+      Freelancer's Banned<br/>
+      TBD
+      </div>  
+    
+    <div class = "col-md-4">
+      <h3><%= @home_team.name %></h3>
+      <% @home_team.profiles.each do |m| %>
+        <%= image_tag m.avatar, class: 'user-index-avatar' %>
+        &emsp;<%= m.username %>
+      <% end %>
+    </div>
+    
+    <div class = "col-md-4">
+      <h3><%= @away_team.name %></h3>
+      <% @away_team.profiles.each do |m| %>
+        <%= image_tag m.avatar, class: 'user-index-avatar' %>
+        &emsp;<%= m.username %>
+      <% end %>
+    </div>
+  </div>
+</div>
