@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518190033) do
+ActiveRecord::Schema.define(version: 20170519171215) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "freelancer_id"
@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 20170518190033) do
     t.string   "date"
     t.string   "time"
     t.integer  "num_matches"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "event_type"
     t.integer  "league_id"
+    t.string   "status",      default: "open"
   end
 
   create_table "events_teams", id: false, force: :cascade do |t|

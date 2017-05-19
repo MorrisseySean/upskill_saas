@@ -1,9 +1,10 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-md-8 col-md-offset-2">
-      <h1>Prep Phase Events</h1>
+    <h1>Prep Phase Events</h1>
+    <div class = "col-md-6">
+      <h3>Open Events</h3>
       <ul class = "list-unstyled">
-        <% @events.each do |e| %>
+        <% @events.where(:status => "open").each do |e| %>
         <li>
           <div class = "row well well-index <%= cycle('', 'light-bg') %>" %>
             <%= link_to root_path do %>
@@ -29,6 +30,26 @@
         </li>
         <% end %>
       </ul>
+    </div>
+    <div class = "col-md-5 col-md-offset-1">
+      <h3>Recent Events</h3>
+      <ul class = "list-unstyled">
+      <% @events.where(:status => "closed").each do |e| %>
+        <li>
+          <div class = "row well well-index <%= cycle('', 'light-bg') %>" %>
+            <%= link_to root_path do %>
+            <div class = "col-sm-8 ">
+                <span class = "index-user-desc"><%= e.name %></span>
+                <h5><i>(<%= e.date %> <%= e.time %>) </i>&emsp;
+                  <span class = "label index-label">
+                    <%= e.event_type %>
+                  </span>
+                </h5>
+            </div>
+            <% end %>
+          </div>
+        </li>
+        <% end %>
     </div>
   </div>
 </div>

@@ -5,10 +5,27 @@
       <h3>Event Details</h3>
       <p>
         <%= @event.event_type %> Event<br/>
+        Status: <%= @event.status.capitalize %><br/>
         Date: <%= @event.date %><br/>
         Time: <%= @event.time %><br/>
         Matches: <%= @event.num_matches %>
       </p>
+      <% if user_signed_in? %>
+        <!-- If user owns the team they can remove them from the event -->
+        <% if @event.status == "open" and @captain %>
+          <%= form_for @event, url: event_path(id: @event.id), :html => { :multipart => true } do |f| %>
+            <%= f.hidden_field :team_id, :value => current_user.profile.team_id %>
+            <%= f.hidden_field :msg, :value => "join" %>
+            <%= submit_tag( "Sign Up", class: "btn btn-info" ) %>
+          <% end %>
+        <% end %>
+        <% if current_user.user_type == "admin" %>
+          <%= form_for @event, url: event_path(id: @event.id), :html => { :multipart => true } do |f| %>
+            <%= f.hidden_field :msg, :value => "close" %>
+            <%= submit_tag( "Toggle Event", class: "btn btn-info" ) %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
     <div class = "col-md-9">
       <h3>Teams</h3>
@@ -21,22 +38,30 @@
             &emsp;<%= t.name %>
             <% end %>
           </div>
-          <div class = "col-md-2">
-            Wins: 0&emsp;Losses: 0&emsp;Points: 0
-          </div>
           <div class = "col-md-4">
-            <% if user_signed_in? %>
-             <!-- If user owns the team they can remove them from the event -->
-              <% if (t.user_id == current_user.id) || (current_user.user_type == "admin") %>
-                <%= form_for @event, url: event_path(id: @event.id), :html => { :multipart => true } do |f| %>
-                  <%= f.hidden_field :msg, :value => "leave" %>
-                  <%= f.hidden_field :team_id, :value => t.id %>
-                  <%= submit_tag( "Remove Team", class: "btn btn-danger" ) %>
+            
+          </div>
+          
+          <div class = "col-md-4">
+            <% if @event.status == "open" %>
+              <% if user_signed_in? %>
+               <!-- If user owns the team they can remove them from the event -->
+                <% if (t.user_id == current_user.id) || (current_user.user_type == "admin") %>
+                  <%= form_for @event, url: event_path(id: @event.id), :html => { :multipart => true } do |f| %>
+                    <%= f.hidden_field :msg, :value => "leave" %>
+                    <%= f.hidden_field :team_id, :value => t.id %>
+                    <%= submit_tag( "Remove Team", class: "btn btn-danger" ) %>
+                  <% end %>
+                <!-- Admins can remove teams from events -->
                 <% end %>
-              <!-- Admins can remove teams from events -->
               <% end %>
+            <% else %>
+              Wins: 0<br/>
+              Losses: 0<br/>
+              Points: 0
             <% end %>
           </div>
+          
         </div>
         <br/><br/>
       <% end %>
