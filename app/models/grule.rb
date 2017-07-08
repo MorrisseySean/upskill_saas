@@ -1,0 +1,3 @@
+class Grule < ApplicationRecord
+    
+end

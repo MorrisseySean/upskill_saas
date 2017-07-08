@@ -68,7 +68,27 @@
         <br/><br/>
       <% end %>
     </div>
-  </div>
+  </div> <!-- /top row well -->
+    <div class = 'row well text-center'>
+      <h2>Matches</h2>
+      <% @match_list.each_with_index do |round, i| %>
+        <% if round[0] %>
+        <div class = "col-md-4">
+          <h3>Round <%= i + 1 %></h3>
+          <% round.each do |m| %>
+            <div class = "col-sm-5">
+              <%= @teams.find{|t| t.id == m.home_team}.name %>
+            </div>
+            <div class = "col-sm-2">V</div>
+            <div class = "col-sm-5">
+              <%= @teams.find{|t| t.id == m.away_team}.name %>
+            </div>
+          </br>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
+    </div> <!-- /matches row well -->
 </div>
 
 <div id="match_modal" class="modal fade" role="dialog">

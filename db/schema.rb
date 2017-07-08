@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519195924) do
+ActiveRecord::Schema.define(version: 20170520155103) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "freelancer_id"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 20170519195924) do
   create_table "freelancers_matches", id: false, force: :cascade do |t|
     t.integer "freelancer_id"
     t.integer "event_id"
+  end
+
+  create_table "grules", force: :cascade do |t|
+    t.integer "fl_bans",       default: 1
+    t.integer "map_bans",      default: 1
+    t.integer "min_team_size", default: 4
+    t.integer "max_team_size", default: 6
   end
 
   create_table "matches", force: :cascade do |t|

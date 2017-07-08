@@ -12,21 +12,57 @@
       Map Pick : TBD    <br/><br/>
       Freelancer's Banned<br/>
       TBD
-      </div>  
-    
-    <div class = "col-md-4">
-      <h3><%= @home_team.name %></h3>
-      <% @home_team.profiles.each do |m| %>
-        <%= image_tag m.avatar, class: 'user-index-avatar' %>
-        &emsp;<%= m.username %>
-      <% end %>
-    </div>
-    
-    <div class = "col-md-4">
-      <h3><%= @away_team.name %></h3>
-      <% @away_team.profiles.each do |m| %>
-        <%= image_tag m.avatar, class: 'user-index-avatar' %>
-        &emsp;<%= m.username %>
+    </div>  
+    <div class = "col-md-8">
+      <div class = "row">
+        <div class = "col-md-6">
+          <h3><%= @home_team.name %></h3>
+          <% @home_team.profiles.each do |m| %>
+            <%= image_tag m.avatar, class: 'user-index-avatar' %>
+            &emsp;<%= m.username %>
+          <% end %>
+        </div>
+        
+        <div class = "col-md-6">
+          <h3><%= @away_team.name %></h3>
+          <% @away_team.profiles.each do |m| %>
+            <%= image_tag m.avatar, class: 'user-index-avatar' %>
+            &emsp;<%= m.username %>
+          <% end %>
+        </div>
+      </div>
+      <% if @home_captain or @away_captain %>
+      <div class = "row">
+        <h3>Match Results</h3>
+        <%= form_for @match, url: matches_path(id: @match.id), :html => { :multipart => true } do |f|%>
+          <% (1..@gl_rules.map_bans).each do |i| %>
+            <div class = 'form-group'>
+              <%= f.label :map_ban %>
+              <%= f.select :map_ban, ["Map A", "Map B", "Map C"], {}, class: 'form-control' %>
+            </div>
+          <% end %>
+          <div class = 'form-group'>
+            <%= f.label :map_pick %>
+            <%= f.select :map_pick, ["Map A", "Map B", "Map C"], {}, class: 'form-control' %>
+          </div>
+          
+          <div class = "col-md-6">
+            <% (1..@gl_rules.fl_bans).each do |i| %>
+              <div class = 'form-group'>
+                <%= f.label "Freelancer Ban" %>
+                <%= select :home_fl_ban, ["Map A", "Map B", "Map C"], {}, class: 'form-control' %>
+              </div>
+            <% end %>
+            <% 5.times do |i| %>
+              <div class = 'form-group'>
+                <%= f.label "Freelancer Ban" %>
+                <%= select :home_fl_ban[i], ["Map A", "Map B", "Map C"], {}, class: 'form-control' %>
+              </div>
+            <% end %>
+          </div>
+          
+        <% end %>
+      </div>
       <% end %>
     </div>
   </div>

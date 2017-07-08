@@ -6,12 +6,13 @@ class MatchesController < ApplicationController
         @match.teams << Team.find(params[:match][:home_team])
         @match.teams << Team.find(params[:match][:away_team])
         # Save the match to the database
-        @new_match.save
+        @match.save
         #Redirect back to the event page
         redirect_to event_path(params[:match][:event_id])
     end
     
     def show
+        @gl_rules = Grule.find(1)
         @match = Match.find(params[:id])
         @home_team = Team.find(@match.home_team)
         @away_team = Team.find(@match.away_team)

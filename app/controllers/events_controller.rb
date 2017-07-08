@@ -11,6 +11,12 @@ class EventsController < ApplicationController
       is_captain
       @event = Event.find(params[:id])
       @teams = @event.teams
+      @match_list = Array.new()
+      @match_list << Match.where("event_id == ?", @event.id).where("round == 1")
+      @match_list << Match.where("event_id == ?", @event.id).where("round == 2")
+      @match_list << Match.where("event_id == ?", @event.id).where("round == 3")
+      @match_list << Match.where("event_id == ?", @event.id).where("round == 4")
+      @match_list << Match.where("event_id == ?", @event.id).where("round == 5")
       @match = Match.new()
     end
     

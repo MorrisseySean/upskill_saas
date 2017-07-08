@@ -8,4 +8,4 @@
 
 #Plan.create(name: 'basic', price: 0)
 #Plan.create(name: 'pro', price: 10)
-Freelancer.create(name: 'Lockwood')
+Grule.create()
