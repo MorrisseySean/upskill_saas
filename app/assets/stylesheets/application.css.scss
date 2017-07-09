@@ -189,3 +189,33 @@ body {
   margin-top: -14px;
   color: white;
 }
+
+.league-col {
+    height: 300px;
+    padding-top: 0px;
+    h3 {
+        text-align: center;
+    }
+}
+
+#carousel-event {
+   height: 100px;
+}
+
+.carousel-well {
+    padding: 0;
+    margin-left: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: #2A2A2A;
+}
+
+.user-home-avatar {
+    height: 50px;
+    width: 50px;
+}
+
+.placeholder-avatar {
+    border-radius: 50%;
+    background-color: green;
+}

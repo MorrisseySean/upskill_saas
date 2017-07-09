@@ -38,6 +38,7 @@
                 <% end %>
               </ul>
             </li>
+            <!-- Guides Menu To Be Implemented
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                      Guides <span class = "fa fa-angle-double-down"></span>
@@ -51,15 +52,16 @@
                 <li role="separator" class="divider"></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> 
+            -->
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     League <span class = "fa fa-angle-double-down"></span> 
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#">Teams</a></li>
-                    <li><a href="#">Leaderboards</a></li>
+                    <li><%= link_to 'Events', events_path %></li>
+                    <!-- Team index to be added <li><%= link_to 'Teams', teams_path %></li> -->
+                    <!-- Leaderboards to be implemented <li><a href="#">Leaderboards</a></li> -->
                     <li role="separator" class="divider"></li>
                     <li><%= link_to "Free Agents", users_path %></li>
                     <li role="separator" class="divider"></li>
@@ -105,11 +107,10 @@
                 <%= link_to "Login", new_user_session_path, class: 'btn btn-default navbar-btn' %>
             <% end %>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <!-- <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Contact Us", new_contact_path %></li>
-            
-          </ul>
+          </ul>-->
         </div><!-- /.navbar-collapse -->
       </div>
     </nav>

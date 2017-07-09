@@ -15,22 +15,74 @@
                     <% end %>
                     </div>
                 </div>
+                <div class = "row well carousel-well">
+                    <div id="carousel-event" class="col-md-12 carousel slide" data-ride="carousel">
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" role="listbox">
+                        <% @events.each do |e| %>
+                        <div class="item active">
+                          <%= link_to event_path(e.id) do %>
+                          <h2><%= e.name %></h2>
+                          <span><%= e.date %>&emsp;<%= e.time %></span>
+                          <% end %>
+                        </div>
+                        <% end %>
+                        <div class="item">
+                          <h2>More Events Coming Soon!</h2>
+                        </div>
+                      </div>
+                    
+                      <!-- Controls -->
+                      <a class="left carousel-control" href="#carousel-event" role="button" data-slide="prev">
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#carousel-event" role="button" data-slide="next">
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "col-md-6 league-col well">
+                        <h3>New Teams</h3>
+                        <% @teams.each do |t| %>
+                            <h4><%= t.name %></h4>
+                        <% end %>
+                    </div>
+                    <div class = "col-md-6 league-col well">
+                        <h3>Free Agents</h3>
+                        <% @users.each do |u| %>
+                            <%= link_to user_path(id: u.user_id) do %>
+                                <% if !u.avatar %>
+                                    <%= image_tag u.avatar.url, class: 'user-home-avatar' %>
+                                <% elsif %>
+                                    <i class="fa fa-superpowers"></i>
+                                <% end %>
+                            <% end %>
+                          <%= u.username %>&emsp;
+                          <span class = "label label-<%= u.favorite_role.downcase %>">
+                            <%= u.favorite_role %>
+                          </span>
+                        <% end %>
+                    </div>
+                </div>
+                <!-- Guides to be implemented
                 <div class="well well-home row">
                     <h2 class="text-center">Top Guides</h2>
-                    <% 6.times do |x| %>
+                    </% 6.times do |x| %>
                         <div class = "col-md-4 grn-border home-guide-box">
                             <div class = "col-sm-4">
                                 <div class = "freelancer-img grn-border"></div>
                             </div>
                             <div class = "col-sm-8">
                                 <div class = "home-guide-text">
-                                    <h4>Guide <%= x + 1 %></h4>
+                                    <h4>Guide </%= x + 1 %></h4>
                                     <span>By User</span>
                                 </div>
                             </div>
                         </div>
-                    <% end %>
-                </div>
+                    </% end %>
+                </div> 
+                -->
             </div>
             <div class="col-md-4">
                 <div class="well well-home">
@@ -53,18 +105,19 @@
                 </div>
                 <div class = "well well-home">
                     <h2>PPL Leaderboard</h2>
-                    <ul>
-                        <% 8.times do |x| %>
+                    <h3 class = "text-center">Coming Soon</h3>
+                    <!--<ul>
+                        </% 8.times do |x| %>
                             <li class = "lb-team row">
                                 <div class = "col-sm-2">
                                     <span class = "freelancer-img grn-border"></span>
                                 </div>
                                 <div class = "col-sm-7 col-sm-offset-1">
-                                    <h4>Team <%= x + 1 %></h4>
+                                    <h4>Team </%= x + 1 %></h4>
                                 </div>
                             </li>
-                        <% end %>
-                    </ul>
+                        </% end %>
+                    </ul>-->
                 </div>
             </div>
             
